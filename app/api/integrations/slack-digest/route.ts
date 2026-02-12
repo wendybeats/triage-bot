@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
 
     const results: BatchResult[] = [];
 
-    for (const [threadId, threadMessages] of threadGroups) {
+    for (const [threadId, threadMessages] of Array.from(threadGroups.entries())) {
       try {
         // Sort by timestamp
         threadMessages.sort((a, b) =>
