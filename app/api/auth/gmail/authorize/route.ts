@@ -1,0 +1,14 @@
+import { NextResponse } from 'next/server';
+import { getAuthUrl } from '@/lib/gmail';
+
+export async function GET() {
+  try {
+    const authUrl = getAuthUrl();
+    return NextResponse.redirect(authUrl);
+  } catch {
+    return NextResponse.json(
+      { error: 'Failed to generate Gmail auth URL' },
+      { status: 500 }
+    );
+  }
+}
